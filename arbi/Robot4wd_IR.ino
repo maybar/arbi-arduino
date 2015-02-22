@@ -6,6 +6,7 @@
 * Josemi 11 January 2015
 ********************************************/
 
+//prueba
 #include <Wire.h>
 #include <Adafruit_MotorShield.h>
 #include <IRremote.h>
