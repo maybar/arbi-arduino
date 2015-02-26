@@ -6,4 +6,38 @@ Esta página contiene la información técnica de los componentes usados en el p
 
 
 = Detalle =
+=== Dagu Electronic Multi-Chassis - 4WD Kit (Basic) ===
+||Comprado en|| Amazon|| 
+||Vendedor|| [http://www.amazon.es/s/ref=bl_sr_automotive?ie=UTF8&field-brandtextbin=DAGU+ELECTRONIC&node=1951051031 DAGU ELECTRONIC]|| 
+||Precio|| 39€||
+||Referencia del fabricante||DG012-BV|| 
 
+*Description*: This is the Multi-Chassis Basic 4WD Kit, an easy to assemble and use robot chassis platform. The Multi-Chassis kit provides you with everything you need to give your robot a fast four wheel drive platform with plenty of room for expansion to add various sensors and controllers. All you need to do is supply is a basic motor driver and power and you'll be ready to drive!
+
+This Multi-Chassis Basic 4WD Kit includes four 48:1 DC gearboxes that independently drive each of the 65mm low-profile wheels. Each side of the 2.5mm thick aluminum frame comes cut with plenty of attachment points to add a multitude of different robot controllers, drivers, and sensors.
+
+Note: A building instruction booklet with a complete list of items included is inside this kit and in the documents section below. This comes as a kit but includes all the hardware and tools necessary for assembly.
+
+Dimensions:
+Completed Kit Size - 165L x 157W x 65H mm
+Wheel Diameter - 65 mm
+
+Kit Includes:
+1x Aluminum Frame
+4x 65 mm Diameter 48:1 DC Gearbox
+4x Low-Profile Wheel
+4x M3 25mm Standoff
+6x M3 8mm Screw
+4x M2.5 25mm Screw
+4x 2.5 20mm Screw
+8x M3 8mm Screw
+8x M2.5 Nut
+2x M3 Nut
+1x 5 AA Battery Holder
+1x Spanner
+1x Screw Driver
+
+Documents:
+Datasheet (DG02S Gearbox)
+Instruction Booklet
+Product Video
