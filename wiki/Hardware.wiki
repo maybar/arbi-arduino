@@ -1,0 +1,9 @@
+#summary Descripción de componentes.
+
+= Introducción =
+
+Esta página contiene la información técnica de los componentes usados en el proyecto .
+
+
+= Detalle =
+
