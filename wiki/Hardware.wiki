@@ -7,7 +7,7 @@ Esta página contiene la información técnica de los componentes usados en el p
 
 = Detalle =
 === Dagu Electronic Multi-Chassis - 4WD Kit (Basic) ===
-||Comprado en|| Amazon|| 
+||Tienda|| Amazon||
 ||Vendedor|| [http://www.amazon.es/s/ref=bl_sr_automotive?ie=UTF8&field-brandtextbin=DAGU+ELECTRONIC&node=1951051031 DAGU ELECTRONIC]|| 
 ||Precio|| 39€||
 ||Referencia del fabricante||DG012-BV|| 
@@ -41,3 +41,29 @@ Documents:
 Datasheet (DG02S Gearbox)
 Instruction Booklet
 Product Video
+
+http://ecx.images-amazon.com/images/I/51ooxtfAAOL._SX355_.jpg
+----
+=== Módulo ultrasónico hc-SR04 Sensor de medición de distancia ===
+||Tienda|| Amazon||
+||Vendedor|| [http://www.amazon.es/s/ref=bl_sr_electronics?ie=UTF8&field-brandtextbin=TOOGOO%26%23xFF08%3BR%26%23xFF09%3B&node=599370031 TOOGOO]|| 
+||Precio|| 4.77€||
+||Referencia del fabricante||hc-SR04|| 
+
+Descripción del producto
+Sensor de distancia ultrasonico de alta precision HC-SR04 para Arduino. - Voltage Operativo: 5V DC - Intensidad: Menos de 2mA. - Angulo de Deteccion: No mas de 15º - Distancia de Deteccion: 2cm~450cm. - Precision: Hasta 3mm
+
+http://ecx.images-amazon.com/images/I/31Nq1B8uyOL._SL500_SS100_.jpg
+
+----
+=== SainSmart UNO a Arduino ===
+||Tienda|| Amazon||
+||Vendedor|| [http://www.amazon.es/s/ref=bl_sr_electronics?ie=UTF8&field-brandtextbin=SainSmart&node=599370031 SainSmart]|| 
+||Precio|| 23.99€||
+||Referencia del fabricante||SainSmart Arduino UNO|| 
+
+Descripción del producto
+El SainSmart Uno se basa en una ATMega328 funcionando a 16 MHz. Esta es la última y más económica Arduino microcontrolador tarjeta. Conectores en los bordes exteriores de circuito impreso permiten conectar una serie de módulos adicionales. Puede ser programado con el software de Arduino. El controlador ATMega328 contiene un gestor de arranque que le permite cambiar el programa sin un programador. El software se puede descargar gratis. características: - Versión: Rev. 1 - Fuente de alimentación: - A través de USB o - Conector de alimentación 7-12 V - Microprocesador: ATMega328 - Memoria Flash: 32 kB - Memoria SRAM: 2 kB - Memoria EEPROM: 1 kB - 14 pines I / O incluyendo 6 PWM - 6 entradas analógicas de 10 bits - Corriente por E / S: 40 mA - Tiempo: 16 MHz - Bus de serie, I2C y SPI - Gestión de Interrupciones - Conector USB B - Dimensiones: 74 x 53 x 15 mm
+
+http://ecx.images-amazon.com/images/I/51FJ-iFu04L._SY355_.jpg
+----
