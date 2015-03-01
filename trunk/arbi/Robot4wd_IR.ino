@@ -6,16 +6,13 @@
 * Josemi 11 January 2015
 ********************************************/
 
-//prueba
 #include <Wire.h>
 #include <Adafruit_MotorShield.h>
 #include <IRremote.h>
 #include <ServoTimer2.h> 
 #include "RobotConstants.h"
-//#include <RobotMotor.h>  // 4wd motor library
+#include <RobotMotor.h>  // 4wd motor library
 
-const int LED_PIN = 13;
-const int RECV_PIN = 8;
 
 signed int speed = MIN_SPEED; // percent of maximum speed
 int old_speed = MIN_SPEED;
@@ -24,65 +21,52 @@ bool b_no_move = false;
 bool b_move_sensor = false; 
 ServoTimer2 myservo;  // create servo object to control a servo 
 
-// Create the motor shield object with the default I2C address
-Adafruit_MotorShield AFMS = Adafruit_MotorShield();
-
-// Select which 'port' M1, M2, M3 or M4.
-Adafruit_DCMotor *Motor_Left_Front = AFMS.getMotor(3);
-Adafruit_DCMotor *Motor_Right_Front = AFMS.getMotor(2);
-Adafruit_DCMotor *Motor_Left_Rear = AFMS.getMotor(4);
-Adafruit_DCMotor *Motor_Right_Rear = AFMS.getMotor(1);
-
 
 IRrecv irrecv(RECV_PIN);
 
 int pwm; 
 int command;
-int right_run, left_run;
-bool b_cambio = false;
 bool b_pulsacion_larga =false;
 unsigned long iKey = 0;
 
+void RobotBegin();  //it is not in the original header
 
 
 void setup()
 {
   Serial.begin(9600);
   Serial.println("MotorTest4wd!");
+  dataDisplayBegin(DATA_nbrItems, labels, minRange, maxRange );
   blinkNumber(8); // open port while flashing. Needed for Leonardo only  
-   
-  myservo.attach(9);  // attaches the servo on pin 9 to the servo object 
-  AFMS.begin();  // create with the default frequency 1.6KHz
-     
-  // scale percent into pwm range (0-255) 
-  pwm= map(speed, 0,100, 0,255);  
+  pinMode(SONAR1_TRIG_PIN, OUTPUT); 
+  pinMode(SONAR1_ECHO_PIN, INPUT);
+  pinMode(SONAR2_TRIG_PIN, OUTPUT); 
+  pinMode(SONAR2_ECHO_PIN, INPUT); 
+  myservo.attach(SERVO_PIN);  // attaches the servo on pin 9 to the servo object 
+  RobotBegin();  // create with the default frequency 1.6KHz
   
-  // Set the speed to start, from 0 (off) to 255 (max speed)
-  Motor_Left_Front->setSpeed(pwm);
-  Motor_Left_Front->run(RELEASE);// turn on motor
-  Motor_Right_Front->setSpeed(pwm);
-  Motor_Right_Front->run(RELEASE);// turn on motor
-  Motor_Left_Rear->setSpeed(pwm);
-  Motor_Left_Rear->run(RELEASE);// turn on motor
-  Motor_Right_Rear->setSpeed(pwm);
-  Motor_Right_Rear->run(RELEASE);// turn on motor
+  moveSetSpeed(speed);
+  moveStop();
   
   irrecv.enableIRIn(); // Start the receiver
   command = CMD_STOP;
-  right_run = RELEASE;
-  left_run = RELEASE;
   StopServo();
-  b_move_sensor=true;
+  b_move_sensor=false;
+  
+  //test
+  /*speed =70;
+  moveRotate (360);
+  delay(1000); */
 }
 
 // this function just increments a value until it reaches a maximum
 
 int incPulse(int val){
 static bool b_inc =false; 
-  if( val  >= MAX_MOVE_SONAR ){
+  if( val  >= LEFT_MOVE_SONAR ){
     b_inc = false;
   }
-  if(val <= MIN_MOVE_SONAR){
+  if(val <= RIGHT_MOVE_SONAR){
     b_inc = true;
   }
   if (b_inc == true)
@@ -106,108 +90,103 @@ void StopServo()
   b_move_sensor=false;
 }
 
+void compensateSpeed()
+{
+  old_speed = speed;
+  speed += INC_SPEED;
+  if (speed < MIN_SPEED) speed = 0;
+  else if (speed > 100) speed = 100; 
+}
 
+// *******************
 // run over and over
+// *******************
 void loop()
 {  
-  b_cambio = true;
+  checkMovement();  
+  processCommand();
+  process_IR();
+  MoveServo();
+}
+
+void processCommand()
+{
   switch(command)
   {
     case CMD_STOP:
     {
-      left_run = RELEASE;
-      right_run = RELEASE;
       speed = old_speed;
+      moveStop();
+      StopServo();
       break;
     }
     case CMD_BW:
     {
-      left_run = BACKWARD;
-      right_run = BACKWARD;
       speed = old_speed;
+      moveSetSpeed(old_speed);     
+      moveBackward();
+      StopServo();
       break;
     }   
     case CMD_FW:
     {
-      left_run = FORWARD;
-      right_run = FORWARD;
-      speed = old_speed;;
+      speed = old_speed;
+      moveSetSpeed(old_speed);
+      moveForward();   
+      b_move_sensor = true;    
       break;
     }  
     case CMD_FW_LEFT:    
     {
-      left_run = RELEASE;
-      right_run = FORWARD;
-      old_speed = speed;
-      speed += INC_SPEED;
+      compensateSpeed();
+      moveSetSpeed(speed);
+      moveLeft(); 
+      b_move_sensor = false;
       break; 
     }    
     case CMD_FW_RIGHT:    
     {
-      left_run = FORWARD;
-      right_run = RELEASE;
-      old_speed = speed;
-      speed += INC_SPEED;
+      compensateSpeed();
+      moveSetSpeed(speed);
+      moveRight();   
+      b_move_sensor = false;   
       break;
     } 
     case CMD_BW_LEFT:    
     {
-      left_run = RELEASE;
-      right_run = BACKWARD;
-      old_speed = speed;
-      speed += INC_SPEED;
+      compensateSpeed();
+      motorStop(MOTOR_LEFT);
+      motorReverse(MOTOR_RIGHT, speed);
+      StopServo();
       break;
     }    
     case CMD_BW_RIGHT:    
     {
-      left_run = BACKWARD;
-      right_run = RELEASE;
-      old_speed = speed;
-      speed += INC_SPEED;
+      compensateSpeed();
+      motorStop(MOTOR_RIGHT);
+      motorReverse(MOTOR_LEFT, speed);  
+      StopServo();    
       break;
     } 
     case CMD_DECREASE:    
     {
-      
-      speed=speed - SPEED_TABLE_INTERVAL;
+      moveSlower(10);    
       break;
     }    
     case CMD_INCREASE:    
     { 
-      speed+=SPEED_TABLE_INTERVAL;     
+      moveFaster(10);
       break;
     }   
     case CMD_NONE:    
     {
-      b_cambio = false;
+      
       break;
     }   
 default:
-b_cambio = false;
+
 break;
   }
-  if (b_cambio == true)
-  {
-    Serial.println(command);
-    if (speed < MIN_SPEED) speed = 0;
-    else if (speed > 100) speed = 100; 
-    if ((left_run == FORWARD) ||  (right_run == FORWARD)) b_move_sensor = true;
-    else StopServo();
-    
-    pwm= map(speed, 0,100, 0,255);
-    Motor_Left_Front->setSpeed(pwm);
-    Motor_Left_Front->run(left_run);
-    Motor_Left_Rear->setSpeed(pwm);
-    Motor_Left_Rear->run(left_run);
-    
-    Motor_Right_Front->setSpeed(pwm);
-    Motor_Right_Front->run(right_run);
-    Motor_Right_Rear->setSpeed(pwm);
-    Motor_Right_Rear->run(right_run);
-  }
-  process_IR();
-  
-  MoveServo();
 }
 
 // function to indicate numbers by flashing the built-in LED
@@ -218,7 +197,6 @@ void blinkNumber( byte number) {
      digitalWrite(LED_PIN, LOW);  delay(400);
    }
 }
-
 
 
 
