@@ -82,7 +82,7 @@ http://ecx.images-amazon.com/images/I/41SjMs2brrL._SY355_.jpg
 ||Tienda|| [http://www.amazon.es Amazon]||
 ||Vendedor|| [http://www.amazon.es/s/ref=bl_sr_electronics?ie=UTF8&field-brandtextbin=SODIAL%28R%29&node=599370031 SODIAL]|| 
 ||Precio|| 2.76€||
-||Referencia del fabricante||015292A2|| 
+||Referencia del fabricante||NRF24L01|| 
 
 Descripción del producto
 * SODIAL es una marca registrada. Solo el vendedor autorizado de SODIAL puede vender los productos de SODIAL. Nuestros productos va a mejorar su experiencia de la inspiracion sin igual. 
