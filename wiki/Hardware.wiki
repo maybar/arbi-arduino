@@ -99,6 +99,8 @@ Descripción del producto
 * El paquete incluye: 2 x antena inalambrica NRF24L01 2.4GHz
 
 http://ecx.images-amazon.com/images/I/51OyHRKDHsL._SY355_.jpg
+
+[https://drive.google.com/file/d/0B5zPF0nXZ9v8djNWNExyeDBUaDg/view?usp=sharing Hoja de datos]
 ----
 === SODIAL(R) Mini Modulo de Detector Sensor de Movimiento/Cuerpo Humano Piroelectrico Infrarrojos PIR ===
 ||Tienda|| [http://www.amazon.es Amazon]||
