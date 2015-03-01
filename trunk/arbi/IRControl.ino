@@ -1,6 +1,10 @@
 
 void process_IR(void)
 {
+  int right_run, left_run;
+  right_run = getRunState(MOTOR_RIGHT);
+  left_run = getRunState(MOTOR_LEFT);
+  
   command = CMD_NONE;
   decode_results results;
   if (irrecv.decode(&results)) 
