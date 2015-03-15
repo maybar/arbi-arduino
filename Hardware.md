@@ -1,0 +1,150 @@
+# Introducción #
+
+Esta página contiene la información técnica de los componentes usados en el proyecto .
+
+
+# Detalle #
+### Dagu Electronic Multi-Chassis - 4WD Kit (Basic) ###
+|Tienda| Amazon|
+|:-----|:------|
+|Vendedor| [DAGU ELECTRONIC](http://www.amazon.es/s/ref=bl_sr_automotive?ie=UTF8&field-brandtextbin=DAGU+ELECTRONIC&node=1951051031)|
+|Precio| 39€|
+|Referencia del fabricante|DG012-BV|
+
+**Description**: This is the Multi-Chassis Basic 4WD Kit, an easy to assemble and use robot chassis platform. The Multi-Chassis kit provides you with everything you need to give your robot a fast four wheel drive platform with plenty of room for expansion to add various sensors and controllers. All you need to do is supply is a basic motor driver and power and you'll be ready to drive!
+
+This Multi-Chassis Basic 4WD Kit includes four 48:1 DC gearboxes that independently drive each of the 65mm low-profile wheels. Each side of the 2.5mm thick aluminum frame comes cut with plenty of attachment points to add a multitude of different robot controllers, drivers, and sensors.
+
+Note: A building instruction booklet with a complete list of items included is inside this kit and in the documents section below. This comes as a kit but includes all the hardware and tools necessary for assembly.
+
+Dimensions:
+Completed Kit Size - 165L x 157W x 65H mm
+Wheel Diameter - 65 mm
+
+Kit Includes:
+1x Aluminum Frame
+4x 65 mm Diameter 48:1 DC Gearbox
+4x Low-Profile Wheel
+4x M3 25mm Standoff
+6x M3 8mm Screw
+4x M2.5 25mm Screw
+4x 2.5 20mm Screw
+8x M3 8mm Screw
+8x M2.5 Nut
+2x M3 Nut
+1x 5 AA Battery Holder
+1x Spanner
+1x Screw Driver
+
+Documents:
+Datasheet (DG02S Gearbox)
+Instruction Booklet
+Product Video
+
+![http://ecx.images-amazon.com/images/I/51ooxtfAAOL._SX355_.jpg](http://ecx.images-amazon.com/images/I/51ooxtfAAOL._SX355_.jpg)
+
+---
+
+### Módulo ultrasónico hc-SR04 Sensor de medición de distancia ###
+|Tienda| Amazon|
+|:-----|:------|
+|Vendedor| [TOOGOO](http://www.amazon.es/s/ref=bl_sr_electronics?ie=UTF8&field-brandtextbin=TOOGOO%26%23xFF08%3BR%26%23xFF09%3B&node=599370031)|
+|Precio| 4.77€|
+|Referencia del fabricante|hc-SR04|
+
+Descripción del producto
+Sensor de distancia ultrasonico de alta precision HC-SR04 para Arduino. - Voltage Operativo: 5V DC - Intensidad: Menos de 2mA. - Angulo de Deteccion: No mas de 15º - Distancia de Deteccion: 2cm~450cm. - Precision: Hasta 3mm
+
+![http://ecx.images-amazon.com/images/I/31Nq1B8uyOL._SL500_SS100_.jpg](http://ecx.images-amazon.com/images/I/31Nq1B8uyOL._SL500_SS100_.jpg)
+
+
+---
+
+### SainSmart UNO a Arduino ###
+|Tienda| Amazon|
+|:-----|:------|
+|Vendedor| [SainSmart](http://www.amazon.es/s/ref=bl_sr_electronics?ie=UTF8&field-brandtextbin=SainSmart&node=599370031)|
+|Precio| 23.99€|
+|Referencia del fabricante|SainSmart Arduino UNO|
+
+Descripción del producto
+El SainSmart Uno se basa en una ATMega328 funcionando a 16 MHz. Esta es la última y más económica Arduino microcontrolador tarjeta. Conectores en los bordes exteriores de circuito impreso permiten conectar una serie de módulos adicionales. Puede ser programado con el software de Arduino. El controlador ATMega328 contiene un gestor de arranque que le permite cambiar el programa sin un programador. El software se puede descargar gratis. características: - Versión: Rev. 1 - Fuente de alimentación: - A través de USB o - Conector de alimentación 7-12 V - Microprocesador: ATMega328 - Memoria Flash: 32 kB - Memoria SRAM: 2 kB - Memoria EEPROM: 1 kB - 14 pines I / O incluyendo 6 PWM - 6 entradas analógicas de 10 bits - Corriente por E / S: 40 mA - Tiempo: 16 MHz - Bus de serie, I2C y SPI - Gestión de Interrupciones - Conector USB B - Dimensiones: 74 x 53 x 15 mm
+
+![http://ecx.images-amazon.com/images/I/51FJ-iFu04L._SY355_.jpg](http://ecx.images-amazon.com/images/I/51FJ-iFu04L._SY355_.jpg)
+
+---
+
+### Transmisor de RF 433Mhz de alta calidad con el receptor Kit para Arduino ARM MCU inalámbrico ###
+|Tienda| [Amazon](http://www.amazon.es)|
+|:-----|:------------------------------|
+|Vendedor| [Tanzimarket](http://www.amazon.es/s/ref=bl_sr_electronics?ie=UTF8&field-brandtextbin=Tanzimarket&node=599370031)|
+|Precio| 2.81€|
+|Referencia del fabricante|SKUTM0756715|
+
+Descripción del producto
+Este es transmisor de 433Mhz RF con kit de receptor para Arduino ARM MCU Entorno de aplicación inalámbrica: interruptor de control remoto, módulo receptor, motocicletas, productos anti-robo del automóvil, productos de seguridad para el hogar, puertas eléctricas, puertas de persiana, ventanas, toma de control remoto, control remoto LED de control, puertas eléctricas de control remoto de audio remotos, control remoto de puertas de garaje, puertas de control remoto retráctiles, portón volumen remoto, puertas pan, abrelatas de la puerta de control remoto, sistema de control de cierre de la puerta, cortinas de control remoto, alarma de acogida, alarma, control remoto de motocicleta control remoto de coches eléctricos, control remoto MP3. Especificaciones: Receptor módulo: Modelo del producto: tensión XD-RF-5V de funcionamiento: DC 5V Corriente en reposo: 4MA Frecuencia de recepción: 433.92MHZ Sensibilidad del receptor: -105dB Tamaño: Transmisor 30x14x7mm: Parámetros técnicos de modelo del producto: la distancia de lanzamiento XD-FST: de 20 200 metros (diferente tensión, resultados diferentes) voltaje de funcionamiento: 3.5-12V Dimensiones: modo de funcionamiento 19 **19mm: Tasa de transferencia de AM: 4 KB / S Potencia de transmisión: 10 mW Frecuencia que transmite: los 433M Pinout de izquierda? derecha: (DATA, VCC, GND) El paquete incluye: Módulo Receptor 1 x 1 x Transmisor**
+
+![http://ecx.images-amazon.com/images/I/41SjMs2brrL._SY355_.jpg](http://ecx.images-amazon.com/images/I/41SjMs2brrL._SY355_.jpg)
+
+---
+
+### SODIAL(R) 2 x Microcontrolador Modulo de Transceptor Inalambrico Antena NRF24L01 2.4GHz Arduino ###
+|Tienda| [Amazon](http://www.amazon.es)|
+|:-----|:------------------------------|
+|Vendedor| [SODIAL](http://www.amazon.es/s/ref=bl_sr_electronics?ie=UTF8&field-brandtextbin=SODIAL%28R%29&node=599370031)|
+|Precio| 2.76€|
+|Referencia del fabricante|NRF24L01|
+
+Descripción del producto
+**SODIAL es una marca registrada. Solo el vendedor autorizado de SODIAL puede vender los productos de SODIAL. Nuestros productos va a mejorar su experiencia de la inspiracion sin igual.** SODIAL(R) 2 x Microcontrolador Modulo de Transceptor Inalambrico Antena NRF24L01 2.4GHz Arduino
+**Tasa de interfaz SPI: 0 ~ 8 Mbps** Trabajo de 125 canales opcionales
+**Tiempo de conmutacion de canal es muy corto, se puede utilizar para el salto de frecuencia** Totalmente compatible con serie nRF24xx
+**I / O puede aceptar nivel 5v de entrada** ¡À60ppm 16MHz cristal
+**Bajo voltaje de funcionamiento: 1.9 ~ 3.6 V** La banda ISM mundial abierto de frecuencia, la potencia maxima 0dbm transmitida, la licencia de uso libre.
+**La distancia de transmision de hasta 100 metros en ocasiones abiertas al aire libre!** El paquete incluye: 2 x antena inalambrica NRF24L01 2.4GHz
+
+![http://ecx.images-amazon.com/images/I/51OyHRKDHsL._SY355_.jpg](http://ecx.images-amazon.com/images/I/51OyHRKDHsL._SY355_.jpg)
+
+[Hoja de datos](https://drive.google.com/file/d/0B5zPF0nXZ9v8djNWNExyeDBUaDg/view?usp=sharing)
+
+---
+
+### SODIAL(R) Mini Modulo de Detector Sensor de Movimiento/Cuerpo Humano Piroelectrico Infrarrojos PIR ###
+|Tienda| [Amazon](http://www.amazon.es)|
+|:-----|:------------------------------|
+|Vendedor| [SODIAL](http://www.amazon.es/s/ref=bl_sr_electronics?ie=UTF8&field-brandtextbin=SODIAL%28R%29&node=599370031)|
+|Precio| 3.92€|
+|Referencia del fabricante|014789|
+
+Descripción del producto
+**SODIAL es una marca registrada. Solo el vendedor autorizado de SODIAL puede vender los productos de SODIAL. Nuestros productos va a mejorar su experiencia de la inspiracion sin igual.** SODIAL(R) Mini Modulo de Detector Sensor de Movimiento/Cuerpo Humano Piroelectrico Infrarrojos PIR
+**Voltaje de funcionamiento amplio, bajo consumo de energia.** Salida de senal de alto nivel, facil de ser unidos a testa con diferentes tipos de circuitos.
+**El modulo es ampliamente aceptado y se ha aplicado para: deteccion de movimiento, control automatico, sensor de proximidad, prevencion de robo electronico, proteccion de seguridad, medicion de control remoto** Temperatura de funcionamiento: -20 ¡æ ~ +70 ¡æ
+**Voltaje de funcionamiento: CC 5V ~ 9V** Corriente de trabajo: 5 mA
+**Corriente estatica: <50uA** Salida de alta tension: 4V
+**Tipo de salida: alto / bajo nivel** Tiempo de retencion de salida de alto nivel: 20 segundos
+**Gama detective: 2 ~ 3 metros (Normal)** Angulo Detective: <140 ¡ã
+**Metodo de activacion: activacion repetida** Dimensiones PCB: 27mm x12mm
+**El paquete incluye: 1 x modulo sensor humano**
+
+![http://ecx.images-amazon.com/images/I/41QA2HnBb9L._SY355_.jpg](http://ecx.images-amazon.com/images/I/41QA2HnBb9L._SY355_.jpg)
+
+---
+
+### 20pcs Soldadura Terminado PCB Prototipo Para Placas Circuito DIY 5x7cm EL PAN ###
+|Tienda| [Amazon](http://www.amazon.es)|
+|:-----|:------------------------------|
+|Vendedor| [GAOHOU](http://www.amazon.es/s/ref=bl_sr_tools?ie=UTF8&field-brandtextbin=GAOHOU&node=2454133031)|
+|Precio| 4.99€|
+|Referencia del fabricante|A878|
+
+Descripción del producto
+Tono Pin es de 2,54 mm
+Cabeceras Arduino encajan directamente en este foro
+
+El paquete incluye:
+20x PCB
+
+![http://ecx.images-amazon.com/images/I/815QAcqyXWL._SL1500_.jpg](http://ecx.images-amazon.com/images/I/815QAcqyXWL._SL1500_.jpg)
+
+---
