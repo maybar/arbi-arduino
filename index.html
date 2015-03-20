@@ -1,51 +1,134 @@
 <!DOCTYPE html>
 <html><head>
+  
+  <meta charset="utf-8">
 
   
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href="https://fonts.googleapis.com/css?family=Chivo:900" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print"><!--[if lt IE 9]>
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Chivo:900" rel="stylesheet" type="text/css">
+
+  
+  <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+
+  
+  <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+
+  
+  <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+<!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]--><title>Arbi-arduino by maybar</title></head><body>
-    <div id="container">
-      <div class="inner">
+    <![endif]-->
+  <title>Proyecto ARBI-Arduino</title>
 
-        <header>
-          </header><h1>Arbi-arduino</h1>
-          <h2>Robot en formato ROVER con control basado en Arduino.</h2>
-        
-
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/maybar/arbi-arduino/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/maybar/arbi-arduino/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/maybar/arbi-arduino" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
-
-        <hr>
-
-        <section id="main_content">
-          </section><p>Características Fase 1</p>
-
+  
+</head><body>
+<div id="container">
+<div class="inner"> <header> </header>
+<h1>Arbi-arduino</h1>
+<h2>Robot en formato ROVER con control basado en Arduino.</h2>
+<section id="downloads" class="clearfix"> <a href="https://github.com/maybar/arbi-arduino/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a> <a href="https://github.com/maybar/arbi-arduino/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a> <a href="https://github.com/maybar/arbi-arduino" id="view-on-github" class="button"><span>View on GitHub</span></a> </section>
+<hr> <section id="main_content"> </section>
+<p style="text-align: justify;">El
+proyecto ARBI-arduino se concebió para desarrollo de una plataforma de
+investigación de las tecnologias básicas usadas en el control autónomo
+de un robot con capacidades de locomoción.</p>
+<p style="text-align: justify;">La Fase 1 del proyecto (ARBI1) integra
+sobre una plataforma movil
+diferente elementos como sensores, servos, motores y comunicación, gestionados por una placa controladora Arduino
+UNO. <br>
+</p>
+<p style="text-align: justify;">El software de control de ARBI1 explora
+las tecnicas básicas de
+control de movimiento autonomo de vehiculos basado en informacion de
+los sensores incorporados.Detección de obstaculos, toma de decisiones
+de mejor ruta son los principales objetivos de la primera fase del
+proyecto. <br>
+</p>
+<h3>Objetivos</h3>
+El proyecto ARBI tiene 3 objetivos: desarrollar el "know-how"
+relacionado con las programación de los sistemas necesarios con el
+control autónomo de un rover.<br>
+<br>
+<ol>
+  <li>Conocer los diferentes elementos electrónicos usados para el
+control de movimiento autónomo de un rover.</li>
+  <li>Estudio de los algoritmos de control para movimiento autónomo de
+un rover de 4 ruedas.</li>
+  <li>Desarrollo de un sistema de telemetria y control remoto.<br>
+  </li>
+</ol>
+<br>
+<h3>Especificaciones y carácteristicas<br>
+</h3>
 <ul>
-<li>Controlador: Arduino UNO (SainSmart? UNO R3)</li>
-<li>Control de motores: "Adafruit Motor Shield V2"</li>
-<li>Control remoto basado en transmisión IR.</li>
-<li>Detección autónoma de obstáculos. <br>
-</li>
-</ul>Foto Arbi Rover<br>
+  <li>4 ruedas motorizadas, movidas independientemente por 4 motores de
+corriente continua. </li>
+  <li>2 sensores de proximidad basados en ultrasonido.</li>
+  <li>5 velocidades.<br>
+  </li>
+  <li>Movimiento de sensor delantero.<br>
+  </li>
+  <li>Consumo medio: 500 mA.</li>
+  <li>Telemetría y control sobre canal inalámbrico a 2.4GHz.<br>
+  </li>
+</ul>
+<br>
+<h3>Fuente de energía</h3>
+<div style="text-align: justify;">La energia es obtenida por un pack de
+6 baterías "AA" la cual genera 9V
+de electricidad para la alimentacion de los sistemas electrónicos y el
+movimiento de los motores.
+</div>
+<p><br>
+</p>
+<h3>Sistemas</h3>
+<ul>
+  <li style="text-align: justify;"><span style="font-weight: bold;">Unidad
+de procesamiento central (CPU)</span>: Esta basada en la tarjeta
+"Arduino UNO (<a href="http://www.sainsmart.com/sainsmart-uno-r3-atmega328-au-development-board-compatible-with-arduino-uno-r3.html" target="_blank">SainSmart UNO R3</a>)".
+Es el ordenador que ejecuta el programa de controla todas las funciones
+de todos los sistemas del rover. Usa un microcontrolador ATmega328
+corriendo a 20MHz.<span style="color: rgb(47, 47, 47); font-family: Verdana,Helvetica,Arial,sans-serif; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; display: inline ! important; float: none; background-color: rgb(255, 255, 255);"></span><br>
+    <span style="font-weight: bold;"></span></li>
+  <li style="text-align: justify;"><span style="font-weight: bold;">Control
+de motores Adafruit (AMC)</span>: Este sistema esta basado en la placa "<a href="https://www.adafruit.com/products/1438" target="_blank">Adafruit
+Motor Shield V2</a>". Se encarga de proporcionar la energia para mover
+cada uno de los 4 motores de corriente continua de las ruedas. El
+controlador envía las ordenes al AMC usando el bus i2c.</li>
+  <li style="text-align: justify;"><span style="font-weight: bold;">Detector
+de distancia por ultrasonido (SONAR1, SONAR2)</span>: Estos sensores
+miden la distancia desde rover hacia cualquier obstáculo en la
+dirección de movimiento. SONAR1 esta instalado en la parte delantera, y
+a diferencia de SONAR2 que es fijo, éste puede hacer un barrido de 160º
+para detectar obstaculos en un area mas amplia.</li>
+  <li style="text-align: justify;"><span style="font-weight: bold;">Radio
+de control y telemetría (DATAR):</span> El rover dispone de una radio
+de comunicaciones bidireccional que establece un canal de comunicacion
+con el exterior. Una frecuencia portadora de 2.4GHz ISM permite, de
+manera robusta, recibir comandos desde sistemas externos y ademas
+enviar datos de dianóstico tanto de los sensores como de los parametros
+procesados internamente en la CPU.<br>
+  </li>
+</ul>
+<p><br>
+</p>
+Foto Arbi Rover ARBI1<br>
 <img style="width: 560px; height: 420px;" alt="ARBI Rover en perspectiva" src="images/IMG_20150304_210451_560x640.jpg"><br>
+<h3>Enlaces internos</h3>
+<ul>
+  <li><a href="componentes.html">Componentes</a><br>
+  </li>
+  <li><a href="chasis.html">Estructura del rover</a></li>
+</ul>
+<br>
 
-        
+<footer>Arbi-arduino is maintained by <a href="https://github.com/maybar">maybar</a><br>
+This page was generated by <a href="https://pages.github.com">GitHub
+Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason
+Long</a>. </footer> </div>
+</div>
 
-        <footer>
-          Arbi-arduino is maintained by <a href="https://github.com/maybar">maybar</a><br>
-          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
-
-        
-      </div>
-    </div>
-  </body></html>
+</body></html>
