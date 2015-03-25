@@ -34,7 +34,7 @@
 <p style="text-align: justify;">El rover ARBI1 usa una tarjeta
 controladora SainSamart UNO R3 ATmega328-AU compatible con Arduino UNO.
 El microcontrolador Atmel de la tarjeta ejecuta el programa a 20MHz, el
-cual se implmenta toda las funcionalidades de movimiento, diagnostico,
+cual se implementa toda las funcionalidades de movimiento, diagnostico,
 control y comunicaciones del rover.<br>
 </p>
 <h3>Especificaciones</h3>
@@ -51,6 +51,77 @@ control y comunicaciones del rover.<br>
 <img style="width: 650px; height: 650px;" alt="Foto de la placa controladora SainSmart UNO R3" src="images/cpu.jpg"><br>
 <h3><br>
 </h3>
+<h3>Conexiones</h3>
+<br>
+<table style="text-align: left; width: 620px; height: 149px;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; width: 82px; text-align: left; font-weight: bold;">Pin CPU<br>
+      </td>
+      <td style="vertical-align: top; width: 137px; text-align: left; font-weight: bold;">Pin Subsistema<br>
+      </td>
+      <td style="vertical-align: top; text-align: left; width: 396px; font-weight: bold;">Descripcion<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: left; width: 82px;">I2C SDA<br>
+      </td>
+      <td style="vertical-align: top; text-align: left; width: 137px;">SDA AMC<br>
+      </td>
+      <td style="vertical-align: top; text-align: left; width: 396px;">Bus de datos para controlar la placa de motores (AMC)<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: left; width: 82px;">I2C SCL<br>
+      </td>
+      <td style="vertical-align: top; text-align: left; width: 137px;">SCL AMC<br>
+      </td>
+      <td style="vertical-align: top; text-align: left; width: 396px;">Reloj del bus de datos de la placa de motores (AMC)<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: left;">D1<br>
+      </td>
+      <td style="vertical-align: top; text-align: left;">Serie TX<br>
+      </td>
+      <td style="vertical-align: top; text-align: left;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: left;">D2<br>
+      </td>
+      <td style="vertical-align: top; text-align: left;">SerieRX<br>
+      </td>
+      <td style="vertical-align: top; text-align: left;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: left; width: 82px;">D9<br>
+      </td>
+      <td style="vertical-align: top; text-align: left; width: 137px;">Servo 2 AMC<br>
+      </td>
+      <td style="vertical-align: top; text-align: left; width: 396px;">Movimiento de rotacion de SONAR1<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: left; width: 82px;">D13<br>
+      </td>
+      <td style="vertical-align: top; text-align: left; width: 137px;">LEDplaca<br>
+      </td>
+      <td style="vertical-align: top; text-align: left; width: 396px;">Usado para indicar actividad por el puerto serie<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: left; width: 82px;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: left; width: 137px;"><br>
+      </td>
+      <td style="vertical-align: top; text-align: left; width: 396px;"><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
 <h3>Enlaces<br>
 </h3>
 
