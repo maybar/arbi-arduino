@@ -1,9 +1,13 @@
-/*********************************
- code for ping distance sensor
-**********************************/
+/*! \file Look.ino
+ * Code for movement implementation
+ * A more elaborated file description.
+ */
 
+/** \fn int getDistance
 // Returns the distance in cm
+   \param Sonar The identifier of the sensor used to calculate the distance of the obstacle.
 // this returns 0 if no ping sensor is connected or the distance is greater than around 4m
+*/
 int getDistance(int Sonar)
 {
   // establish variables for duration of the ping,
@@ -22,7 +26,7 @@ int getDistance(int Sonar)
       delayMicroseconds(10);
       digitalWrite(SONAR1_TRIG_PIN, LOW);
     
-      duration = pulseIn(SONAR1_ECHO_PIN, HIGH/*, 20000*/); // if a pulse does not arrive 
+      duration = pulseIn(SONAR1_ECHO_PIN, HIGH,8000); // if a pulse does not arrive 
                                                 // in 20 ms then the ping sensor
     }  
     else if (Sonar == SONAR2)
@@ -48,16 +52,18 @@ int getDistance(int Sonar)
   //cm = int(0.017*duration);  // for 5V
   cm = int(duration/40);  // correcion debido a que elvoltaje es 4.8 voltios en lugar de 5V
   
-  Serial.println(cm);
+  //Serial.println(cm);
   return cm ; // convert cm
 }
 
 
-// -------------------------------
-// -------------------------------
-void checkMovement()
+/** \fn void checkMovement
+ It checks if there is an obstacle in the direction of movement.
+*/
+void checkMovement(int modo)
 {
   int distance = 0;
+  bool b_forward = false;
   if (moveGetState() == MOV_BACK)
   {
     distance = getDistance(SONAR2);
@@ -65,15 +71,24 @@ void checkMovement()
   else if (moveGetState() == MOV_FORWARD)
   {
     distance = getDistance(SONAR1);
+    b_forward = true;
   }
-  if((distance <= MIN_DISTANCE) && (distance != 0)) 
+  int index = (moveGetSpeed() - MIN_SPEED) / SPEED_TABLE_INTERVAL;
+  //int LimitDistance = MIN_DISTANCE + moveGetSpeed()-MIN_DISTANCE;
+  if((distance <= minDistance[index]) && (distance != 0)) 
   {
     moveStop();
-    roam();
-    command = CMD_STOP;
+    StopServo();
+    arp = 1;
+    /*delay(1000);
+    if (b_forward && (modo == MODO_AUTO)) roam();
+    command = CMD_STOP;*/
   }
 }
 
+/** \fn int lookAt
+ Look at 3 different directions : DIR_CENTER, DIR_LEFT, DIR_RIGHT
+*/
 int lookAt(int dir)
 {
   switch(dir)
@@ -92,7 +107,9 @@ int lookAt(int dir)
   return getDistance(SONAR1);
 }
 
-// Look for and avoid obstacles by rotating robot  
+/** \fn void roam
+ Look for and avoid obstacles by rotating robot  
+*/
 void roam()
 {
   //int distance;

@@ -1,5 +1,19 @@
+/** \file DataDisplay.ino
+ * code for ping distance sensor.
+ * A more elaborated file description.
+ */
+ 
+
 // DataDisplay
 
+/*! \fn void dataDisplayBegin
+ *  \brief A member function.
+ *  \param nbrItems an item.
+ *  \param labels The labels of the data.
+  *  \param minRange minimum range
+ *  \param maxRange maximun range.
+ *  \return void.
+ */
 void dataDisplayBegin(int nbrItems, char* labels[], int minRange[], int maxRange[] )
 {
    for(int i = 1; i < nbrItems; i++) 

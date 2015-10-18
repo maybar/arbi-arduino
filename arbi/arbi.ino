@@ -1,33 +1,67 @@
-/** \file Robot4wd_IR.ino
- * Robot control using IR remote control.
+/** \file arbi.ino
+ * Robot control using the ISM radio control.
  * 
  * This program runs in the rover ARBI1.
- * Josemi 11 January 2015
+ * Miguel A. 26 March 2015
  */
+
+/*! \mainpage A Brief Description.
+\section my-intro Introduction
+This is the complete documentation of the source code for the application running in the rover ARBI.
+It includes only the application but not the following libraries:
+ - Adafruit_Motoshield
+ - ServoTimer2
+ - RobotMotor
  
-#ifdef ENABLE_IR
+The documentation of these libraries are included in the package for download.
+
+\image html http://maybar.github.io/arbi-arduino/images/IMG_20150304_210451_560x640.jpg
+\htmlinclude about-MyProject.html
+
+*/
+ 
+#include <SPI.h>
+#include <Mirf.h>
+//#include <nRF24L01.h>
+#include <MirfHardwareSpiDriver.h>
+
 #include <Wire.h>
 #include <Adafruit_MotorShield.h>
+#ifdef ENABLE_IR
 #include <IRremote.h>
+#endif
 #include <ServoTimer2.h> 
 #include "RobotConstants.h"
 #include <RobotMotor.h>  // 4wd motor library
 
+#include <TimerOne.h>
 
-//signed int speed = MIN_SPEED; // percent of maximum speed                     
+//#define ENABLE_IR                 
 
 unsigned long timer = 0;   //! 
 bool b_no_move = false;    //! It indicates if the servo has to move 
 bool b_move_sensor = false; 
 ServoTimer2 myservo;  // create servo object to control a servo 
 
-
+#ifdef ENABLE_IR
 IRrecv irrecv(RECV_PIN);
+#endif
 
+int arp=0;
 int pwm; 
 int command;
 bool b_pulsacion_larga =false;
 unsigned long iKey = 0;
+int local_power = NO_DATA;
+bool b_cmd_tx= false;
+int modo = MODO_MANUAL;
+int time_batery_check=0;
+
+
+#define RADIO_DATA_LEN 4
+byte radio_tx_buffer[RADIO_DATA_LEN];
+byte radio_rx_buffer[RADIO_DATA_LEN];
+
 
 void RobotBegin();  //it is not in the original header
 
@@ -49,16 +83,42 @@ void setup()
   
   moveSetSpeed(MIN_SPEED);
   moveStop();
-  
+#ifdef ENABLE_IR  
   irrecv.enableIRIn(); // Start the receiver
+#endif
   command = CMD_STOP;
   StopServo();
   b_move_sensor=false;
   
-  //test
-  /*speed =70;
-  moveRotate (360);
-  delay(1000); */
+   // * Setup pins / SPI.
+  Mirf.cePin = 6;
+  Mirf.csnPin = 7;
+  Mirf.spi = &MirfHardwareSpi;
+  Mirf.init();
+  
+  Mirf.setRADDR((byte *)"arbi1");   // Configure receiving address.
+  Mirf.payload = RADIO_DATA_LEN;   // Set the payload length 
+  
+   //* Write channel and payload config then power up receiver.
+  Mirf.channel = 10;
+  Mirf.config();
+  
+  Timer1.initialize(500000); // set a timer of length 500 msecond 
+  Timer1.attachInterrupt( timerIsr ); // attach the service routine here
+
+   //Configura la referencia del conversor analogico para el sensor de voltaje  
+  analogReference(INTERNAL);      // set reference to internal (1.1V)
+  analogRead(BATTERY_MONITOR_PIN);  // allow the ADC to settle
+  delay(10);
+}
+
+/// --------------------------
+/// Custom ISR Timer Routine
+/// --------------------------
+void timerIsr()
+{
+   b_cmd_tx = true;
+   time_batery_check++;
 }
 
 /** \fn int incPulse
@@ -108,10 +168,64 @@ void StopServo()
 */
 void loop()
 {  
-  checkMovement();  
+  checkMovement(modo); 
+  processRadio();   
   processCommand();
-  process_IR();
+#ifdef ENABLE_IR
+  //process_IR();
+#endif
   MoveServo();
+  batteryCheck(local_power);
+}
+
+void processRadio()
+{
+   static int i_cmd_send=0;    //rx
+   
+   switch(i_cmd_send)
+   {
+      case 0:  //rx
+      {
+         if (Mirf.dataReady())
+         {           
+            Mirf.getData((byte *) &radio_rx_buffer[0]);
+            if ((radio_rx_buffer[0] != modo) ||(radio_rx_buffer[1]!=command)) {
+               modo = radio_rx_buffer[0];    //mode
+               command = radio_rx_buffer[1]; //comando en modo manual
+               i_cmd_send=1;  //envia la respuesta
+            }
+         }
+         if (b_cmd_tx)  {  //solicita el envío
+            i_cmd_send=1;
+            b_cmd_tx = false;
+         }
+         break;
+      }
+      case 1:  //tx
+      {
+         //Serial.println("TX");
+         Mirf.setTADDR((byte *)"arco");
+         radio_tx_buffer[0] = modo+command; //checksum de comando
+         radio_tx_buffer[1] = local_power;
+         radio_tx_buffer[2] = moveGetSpeed();
+         radio_tx_buffer[3] = arp;
+         Mirf.send((byte *)&radio_tx_buffer[0]);
+         i_cmd_send = 2;
+         break;
+      }
+      case 2:  //wait to send
+      {
+         if (!Mirf.isSending())
+         {
+            i_cmd_send = 0;
+         }
+         break;
+      }
+      default:
+      {
+         break;
+      }
+   }  
 }
 
 /** \fn void processCommand
@@ -120,49 +234,46 @@ void loop()
 */
 void processCommand()
 {
+   static int old_command=CMD_NONE;
+   if (command == old_command) return;
+   old_command = command;
   switch(command)
   {
     case CMD_STOP:
     {
-      //speed = old_speed;
       moveStop();
       StopServo();
       break;
     }
     case CMD_BW:
-    {
-      //speed = old_speed;
-      //moveSetSpeed(old_speed);     
+    {    
+      arp=0;
       moveBackward();
       StopServo();
       break;
     }   
     case CMD_FW:
     {
-      //speed = old_speed;
-      //moveSetSpeed(old_speed);
+       arp=0;
       moveForward();   
       b_move_sensor = true;    
       break;
     }  
     case CMD_FW_LEFT:    
     {
-      //compensateSpeed();
-      //moveSetSpeed(speed);
+       arp=0;
       moveLeft(); 
-      b_move_sensor = false;
       break; 
     }    
     case CMD_FW_RIGHT:    
     {
-      //compensateSpeed();
-      //moveSetSpeed(speed);
-      moveRight();   
-      b_move_sensor = false;   
+       arp=0;
+      moveRight();     
       break;
     } 
     case CMD_BW_LEFT:    
     {
+       arp=0;
       //compensateSpeed();
       //motorStop(MOTOR_LEFT);
       //motorReverse(MOTOR_RIGHT, speed);
@@ -171,10 +282,23 @@ void processCommand()
     }    
     case CMD_BW_RIGHT:    
     {
+       arp=0;
       /*compensateSpeed();
       motorStop(MOTOR_RIGHT);
       motorReverse(MOTOR_LEFT, speed);  
       StopServo(); */   
+      break;
+    } 
+    case CMD_ROT_LEFT:    
+    {
+       arp=0;
+      moveStartRotation(DIR_LEFT);
+      break; 
+    }    
+    case CMD_ROT_RIGHT:    
+    {
+       arp=0;
+      moveStartRotation(DIR_RIGHT);   
       break;
     } 
     case CMD_DECREASE:    
@@ -208,5 +332,6 @@ void blinkNumber( byte number) {
      digitalWrite(LED_PIN, LOW);  delay(400);
    }
 }
-#endif
+
+
 

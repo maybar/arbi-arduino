@@ -1,4 +1,13 @@
-
+/** \file IRControl.ino
+ * code for ping distance sensor.
+ * A more elaborated file description.
+ */
+ 
+ #ifdef ENABLE_IR
+ /**
+ * A global integer value.
+ * More details about this value.
+ */
 void process_IR(void)
 {
   int right_run, left_run;
@@ -94,3 +103,4 @@ void process_IR(void)
   }
 }
 
+#endif

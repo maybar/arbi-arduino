@@ -3,9 +3,17 @@
 *************************************/
 
 int moveState = MOV_STOP;   // what robot is doing
- 
+int old_speed = MIN_SPEED;
 int  moveSpeed   = 0; // move speed stored here (0-100%)
 int  speedIncrement = 10; // percent to increase or decrease speed
+
+void compensateSpeed()
+{
+  old_speed = moveSpeed;
+  moveSpeed += INC_SPEED;
+  if (moveSpeed < MIN_SPEED) moveSpeed = 0;
+  else if (moveSpeed > 100) moveSpeed = 100; 
+}
 
 void moveBegin()
 {
@@ -16,6 +24,7 @@ void moveBegin()
 
 void moveLeft()
 {
+  compensateSpeed();
   motorForward(MOTOR_LEFT,  0);
   motorForward(MOTOR_RIGHT, moveSpeed);
   changeMoveState(MOV_LEFT);  
@@ -23,6 +32,7 @@ void moveLeft()
 
 void moveRight()
 {
+  compensateSpeed();
   motorForward(MOTOR_LEFT,  moveSpeed);
   motorForward(MOTOR_RIGHT, 0);
   changeMoveState(MOV_RIGHT); 
@@ -30,6 +40,7 @@ void moveRight()
 
 void moveStop()
 {
+  moveSpeed = old_speed;
   motorStop(MOTOR_LEFT);
   motorStop(MOTOR_RIGHT);
   changeMoveState(MOV_STOP);  
@@ -44,6 +55,7 @@ void moveBrake()
 
 void moveBackward()
 {
+  moveSpeed = old_speed;
   motorReverse(MOTOR_LEFT, moveSpeed);
   motorReverse(MOTOR_RIGHT, moveSpeed);  
   changeMoveState(MOV_BACK);  
@@ -51,6 +63,7 @@ void moveBackward()
 
 void moveForward()
 {
+  moveSpeed = old_speed;
   motorForward(MOTOR_LEFT,  moveSpeed);
   motorForward(MOTOR_RIGHT, moveSpeed);
   changeMoveState(MOV_FORWARD);  
@@ -61,29 +74,35 @@ void moveSetSpeed(int speed)
   motorSetSpeed(MOTOR_LEFT, speed) ;
   motorSetSpeed(MOTOR_RIGHT, speed) ;
   moveSpeed = speed; // save the value
+  old_speed = speed;
 } 
+
+int moveGetSpeed(void)
+{
+   return moveSpeed;
+}
 
 //*********************************************
 //Functions to speed up or slow down the robot
 //*********************************************
 void moveSlower(int decrement)
 {
-   Serial.print(" Slower: "); 
+   //Serial.print(" Slower: "); 
    if( moveSpeed >= speedIncrement + MIN_SPEED)
      moveSpeed -= speedIncrement;     
    else moveSpeed = MIN_SPEED;
    moveSetSpeed(moveSpeed); 
-   Serial.println(moveSpeed);
+   //Serial.println(moveSpeed);
 }
 
 void moveFaster(int increment)
 {
-  Serial.print(" Faster: ");
+  //Serial.print(" Faster: ");
   moveSpeed += speedIncrement; 
-  if(moveSpeed > 100)
+  if(moveSpeed > (100))
      moveSpeed = 100;
   moveSetSpeed(moveSpeed); 
-  Serial.println(moveSpeed);  
+  //Serial.println(moveSpeed);  
 }
 
 int moveGetState()
@@ -109,6 +128,7 @@ void changeMoveState(int newState)
 void moveRotate(int angle)
 {
   Serial.print("Rotating ");  Serial.println(angle);
+  compensateSpeed();
   if(angle < 0)
   {
     Serial.println(" (left)"); 
@@ -132,6 +152,7 @@ void moveRotate(int angle)
 
 void moveStartRotation(int dir)
 {
+  compensateSpeed();
   Serial.print("Rotating dir:");  Serial.println(dir);
   if(dir == DIR_LEFT)
   {
@@ -242,6 +263,6 @@ void movingDelay(long duration)
   long startTime = millis();
   while(millis() - startTime < duration) {
      // function in Look module checks for obstacle in direction of movement 
-     checkMovement();
+     checkMovement(MODO_AUTO);
   }  
 } 
