@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html><head>
+
+
   
   <meta charset="utf-8">
 
@@ -16,15 +18,9 @@
   <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
 
   
-  <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-
-<!--[if lt IE 9]>
+  <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print"><!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  <title>ARBI - CPU</title>
-
-  
-</head><body>
+    <![endif]--><title>ARBI - CPU</title></head><body>
 <div id="container">
 <div class="inner"> <header> </header>
 <h1>Arbi-arduino</h1>
@@ -80,7 +76,7 @@ control y comunicaciones del rover.<br>
       </td>
     </tr>
     <tr>
-      <td style="vertical-align: top; text-align: left;">D1<br>
+      <td style="vertical-align: top; text-align: left;">D0<br>
       </td>
       <td style="vertical-align: top; text-align: left;">Serie TX<br>
       </td>
@@ -88,14 +84,49 @@ control y comunicaciones del rover.<br>
       </td>
     </tr>
     <tr>
-      <td style="vertical-align: top; text-align: left;">D2<br>
+      <td style="vertical-align: top; text-align: left;">D1<br>
       </td>
-      <td style="vertical-align: top; text-align: left;">SerieRX<br>
+      <td style="vertical-align: top; text-align: left;">Serie RX<br>
       </td>
       <td style="vertical-align: top; text-align: left;"><br>
       </td>
     </tr>
     <tr>
+      <td style="vertical-align: top; text-align: left;">D2<br>
+      </td>
+      <td style="vertical-align: top; text-align: left;">ECHO_SONAR2<br>
+      </td>
+      <td style="vertical-align: top; text-align: left;">Pin Echo del módulo HC-SR04 trasero<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: left;">D3<br>
+      </td>
+      <td style="vertical-align: top; text-align: left;">TRIG_SONAR2<br>
+      </td>
+      <td style="vertical-align: top; text-align: left;">Pin de disparo del módulo HC-SR04 trasero</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: left;">D4<br>
+      </td>
+      <td style="vertical-align: top; text-align: left;">ECHO_SONAR1</td>
+      <td style="vertical-align: top; text-align: left;">Pin Echo del módulo HC-SR04 delantero</td>
+    </tr>
+    <tr>
+<td style="vertical-align: top; text-align: left;">D5<br>
+</td>
+<td style="vertical-align: top; text-align: left;">TRIG_SONAR1</td>
+<td style="vertical-align: top; text-align: left;">Pin de disparo del módulo HC-SR04 delantero</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top; text-align: left;">D8<br>
+      </td>
+      <td style="vertical-align: top; text-align: left;">RX IR<br>
+      </td>
+      <td style="vertical-align: top; text-align: left;">Pin de datos del receptor infrarojo para control remoto.<br>
+      </td>
+    </tr>
+<tr>
       <td style="vertical-align: top; text-align: left; width: 82px;">D9<br>
       </td>
       <td style="vertical-align: top; text-align: left; width: 137px;">Servo 2 AMC<br>
@@ -112,11 +143,11 @@ control y comunicaciones del rover.<br>
       </td>
     </tr>
     <tr>
-      <td style="vertical-align: top; text-align: left; width: 82px;"><br>
+      <td style="vertical-align: top; text-align: left; width: 82px;">A0<br>
       </td>
-      <td style="vertical-align: top; text-align: left; width: 137px;"><br>
+      <td style="vertical-align: top; text-align: left; width: 137px;">BAT<br>
       </td>
-      <td style="vertical-align: top; text-align: left; width: 396px;"><br>
+      <td style="vertical-align: top; text-align: left; width: 396px;">Sensor de nivel de batería.<br>
       </td>
     </tr>
   </tbody>
@@ -126,6 +157,7 @@ control y comunicaciones del rover.<br>
 </h3>
 
 Ver en página de <a href="componentes.html#UNO_a_Arduino">componentes</a>.<br>
+<a href="https://github.com/maybar/arbi-arduino">Software</a>.<br>
 <h3><br>
 </h3>
 <h3>Enlaces externos</h3>
