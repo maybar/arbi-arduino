@@ -11,6 +11,9 @@ Características Fase 1
 Pagina Web del proyecto
 http://maybar.github.io/arbi-arduino/
 
+Página Wiki del proyecto
+https://github.com/maybar/arbi-arduino/wiki
+
 Automatically exported from code.google.com/p/arbi-arduino
 
 
