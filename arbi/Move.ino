@@ -10,9 +10,10 @@ int  speedIncrement = 10; // percent to increase or decrease speed
 void compensateSpeed()
 {
   old_speed = moveSpeed;
-  moveSpeed += INC_SPEED;
-  if (moveSpeed < MIN_SPEED) moveSpeed = 0;
-  else if (moveSpeed > 100) moveSpeed = 100; 
+   moveSpeed = 30; //velocidad de rotacion  
+  //moveSpeed += INC_SPEED;
+  //if (moveSpeed < MIN_SPEED) moveSpeed = 0;
+  //else if (moveSpeed > 100) moveSpeed = 100; 
 }
 
 void moveBegin()

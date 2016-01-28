@@ -56,7 +56,8 @@ int local_power = NO_DATA;
 bool b_cmd_tx= false;
 int modo = MODO_MANUAL;
 int time_batery_check=0;
-
+int left_move_sonar =0;
+int right_move_sonar =0;
 
 #define RADIO_DATA_LEN 4
 byte radio_tx_buffer[RADIO_DATA_LEN];
@@ -71,7 +72,7 @@ void RobotBegin();  //it is not in the original header
 void setup()
 {
   Serial.begin(9600);
-  Serial.println("MotorTest4wd!");
+  Serial.println("ARBI 1");
   dataDisplayBegin(DATA_nbrItems, labels, minRange, maxRange );
   blinkNumber(8); // open port while flashing. Needed for Leonardo only  
   pinMode(SONAR1_TRIG_PIN, OUTPUT); 
@@ -82,6 +83,7 @@ void setup()
   RobotBegin();  // create with the default frequency 1.6KHz
   
   moveSetSpeed(MIN_SPEED);
+  setServoRange();
   moveStop();
 #ifdef ENABLE_IR  
   irrecv.enableIRIn(); // Start the receiver
@@ -112,6 +114,16 @@ void setup()
   delay(10);
 }
 
+
+void setServoRange()
+{
+   int index = (moveGetSpeed() - MIN_SPEED) / SPEED_TABLE_INTERVAL;
+   int check_range_sonar = 300*50/minDistance[index];
+   left_move_sonar =  MID_MOVE_SONAR +  check_range_sonar/2 ; 
+   right_move_sonar = MID_MOVE_SONAR -  check_range_sonar/2 ;   
+
+}
+
 /// --------------------------
 /// Custom ISR Timer Routine
 /// --------------------------
@@ -127,10 +139,10 @@ void timerIsr()
 */
 int incPulse(int val){
 static bool b_inc =false; 
-  if( val  >= LEFT_MOVE_SONAR ){
+  if( val  >= left_move_sonar ){
     b_inc = false;
   }
-  if(val <= RIGHT_MOVE_SONAR){
+  if(val <= right_move_sonar){
     b_inc = true;
   }
   if (b_inc == true)
@@ -303,12 +315,14 @@ void processCommand()
     } 
     case CMD_DECREASE:    
     {
-      moveSlower(10);    
+      moveSlower(10);  
+      setServoRange();  
       break;
     }    
     case CMD_INCREASE:    
     { 
       moveFaster(10);
+      setServoRange();
       break;
     }   
     case CMD_NONE:    
