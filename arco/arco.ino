@@ -8,6 +8,9 @@
 /*! \mainpage A Brief Description.
 \section my-intro Introduction
 This is the complete documentation of the source code for the application running in the remote ARCO.
+Radios:
+XD_FST 433MHz
+nRF24L01 868MHz
 
 \image html http://maybar.github.io/arbi-arduino/images/IMG_20150304_210451_560x640.jpg
 \htmlinclude about-MyProject.html
